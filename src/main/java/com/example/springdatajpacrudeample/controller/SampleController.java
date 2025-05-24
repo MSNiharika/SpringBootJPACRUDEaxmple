@@ -11,10 +11,14 @@ import java.util.List;
 @RestController
 public class SampleController {
 
-    @Autowired
-    private SampleService sampleService;
+    private final SampleService sampleService;
 
-    @GetMapping("/all")
+    @Autowired
+    public SampleController(SampleService sampleService) {
+        this.sampleService = sampleService;
+    }
+
+    @GetMapping("/getAllUsers")
     public List<SampleEntity> getUsers() {
        return sampleService.getAll();
     }
